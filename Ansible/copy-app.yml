@@ -1,0 +1,9 @@
+- name: play
+  become: true
+  gather_facts: false
+  hosts: EC2
+  tasks:
+    - name: Copy app to the remote server
+      copy:
+        src: ../java-login-app
+        dest: .
