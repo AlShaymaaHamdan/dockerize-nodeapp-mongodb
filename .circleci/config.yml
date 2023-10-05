@@ -10,7 +10,7 @@ jobs:
       - checkout                
       - run:
           name: "Plan terraform"
-          working_directory: terraform
+          working_directory: Terraform
           command: |
             terraform init
             terraform plan --var-file=devops.tfvars
@@ -24,7 +24,7 @@ jobs:
           docker_layer_caching: true
       - run:
           name: "apply terraform if approved"
-          working_directory: terraform
+          working_directory: Terraform
           command: |
             terraform init
             terraform apply --var-file=devops.tfvars -auto-approve
@@ -32,16 +32,15 @@ jobs:
       - run:
           name: "Build & Push The Docker Image To Docker Hub"
           command: |
-            docker build -t $DOCKERHUB_USERNAME/coffee-shop:$CIRCLE_BUILD_NUM .
+            docker build -t $DOCKERHUB_USERNAME/edit-profile-nodeapp:$CIRCLE_BUILD_NUM .
             docker login -u $DOCKERHUB_USERNAME -p $DOCKER_PASSWORD
-            docker push $DOCKERHUB_USERNAME/coffee-shop:$CIRCLE_BUILD_NUM
+            docker push $DOCKERHUB_USERNAME/edit-profile-nodeapp:$CIRCLE_BUILD_NUM
             
       - run:
           name: "Run ansible file to deploy the container to ec2"
-          working_directory: ansible
+          working_directory: Ansible
           command: |
-            ansible-playbook -i inventory nginxPlaybook.yml
-            ansible-playbook -i inventory -e "CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME" playbook.yml
+            ansible-playbook -i inventory -e "CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME" config-EC2.yml
 
   destroy-terraform:
     executor: docker-executor
