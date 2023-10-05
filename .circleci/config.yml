@@ -36,9 +36,7 @@ jobs:
       - run:
           name: "Build & Push The Docker Image To Docker Hub"
           command: |
-            docker build -t $DOCKERHUB_USERNAME/edit-profile-nodeapp:$CIRCLE_BUILD_NUM .
             docker login -u $DOCKERHUB_USERNAME -p $DOCKER_PASSWORD
-            docker push $DOCKERHUB_USERNAME/edit-profile-nodeapp:$CIRCLE_BUILD_NUM
             
       - run:
           name: "Run ansible file to deploy the container to ec2"
