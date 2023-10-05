@@ -4,16 +4,15 @@ resource "null_resource" "runtime" {
   }
   
   provisioner "local-exec" {
-    command = <<EOF
-      chmod +x ../Scripts/inventory.sh
-      chmod +x ../Scripts/config.sh
-    EOF
+    command = chmod +x ../Scripts/inventory.sh
   }
 
   provisioner "local-exec" {
-    command = <<EOF
-      ../Scripts/config.sh ${aws_instance.tf-ec2.public_ip}
-    EOF
+    command = chmod +x ../Scripts/config.sh
+  }
+
+  provisioner "local-exec" {
+    command = ../Scripts/config.sh ${aws_instance.tf-ec2.public_ip}
   }
 
   # provisioner "local-exec" {
