@@ -1,4 +1,4 @@
-subnet       = "subnet-0e905311f5155fea8"
-sg_ec2 = "sg-0c27523a5f1318624"
-region = "us-east-1"
-ami = "ami-053b0d53c279acc90"
+subnet       = "subnet-036419217dd4befed"
+sg_ec2 = "sg-074cc792da5be4bd0"
+region = "us-west-2"
+ami = "ami-00b7cc7d7a9f548ea"
