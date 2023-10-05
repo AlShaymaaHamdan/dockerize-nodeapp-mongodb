@@ -3,16 +3,22 @@ resource "null_resource" "runtime" {
     always_run = "${timestamp()}"
   }
   
-  provisioner "local-exec" {
-    command = chmod +x ../Scripts/inventory.sh
+   provisioner "local-exec" {
+    command = <<EOF
+      chmod +x ../Scripts/inventory.sh
+    EOF
+  }
+
+   provisioner "local-exec" {
+    command = <<EOF
+      chmod +x ../Scripts/config.sh
+    EOF
   }
 
   provisioner "local-exec" {
-    command = chmod +x ../Scripts/config.sh
-  }
-
-  provisioner "local-exec" {
-    command = ../Scripts/config.sh ${aws_instance.tf-ec2.public_ip}
+    command = <<EOF
+      ../Scripts/config.sh ${aws_instance.tf-ec2.public_ip}
+    EOF
   }
 
   # provisioner "local-exec" {
