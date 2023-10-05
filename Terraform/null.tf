@@ -5,7 +5,8 @@ resource "null_resource" "runtime" {
   
   provisioner "local-exec" {
     command = <<EOF
-      chmod +x ../Scripts/inventory.sh && chmod +x ../Scripts/config.sh
+      chmod +x ../Scripts/inventory.sh
+      chmod +x ../Scripts/config.sh
     EOF
   }
 
