@@ -16,4 +16,8 @@ resource "aws_key_pair" "tfproject" {
 resource "local_file" "tfproject" {
   content  = tls_private_key.tfproject.private_key_pem
   filename = "tfproject.pem"
+
+  provisioner "local-exec" {
+    command = "chmod 400 tfproject.pem"
+  }
 }
