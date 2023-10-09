@@ -44,7 +44,7 @@
         dest: .
 
     - name: run docker compose
-        community.docker.docker_compose:
+      community.docker.docker_compose:
         project_src: ../
         files:
         - docker-compose.yml
