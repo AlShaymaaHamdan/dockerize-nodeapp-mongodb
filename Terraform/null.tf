@@ -8,6 +8,10 @@ resource "null_resource" "runtime" {
   }
 
    provisioner "local-exec" {
+    command = "../Scripts/inventory.sh remoteMachine"
+  }
+
+   provisioner "local-exec" {
     command = "chmod +x ../Scripts/config.sh"
   }
 
