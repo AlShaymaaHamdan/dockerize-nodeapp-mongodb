@@ -11,10 +11,10 @@ resource "aws_instance" "tf-ec2" {
     # the Public SSH key
     key_name                = aws_key_pair.tfproject.key_name
   
-    # connection {
-    #     user = "ubuntu"
-    #     private_key = "${file("tfproject.pem")}"
-    # }
+    connection {
+        user = "ubuntu"
+        private_key = "${file("tfproject.pem")}"
+    }
 
     tags = {
         Name = "tf-ec2"
