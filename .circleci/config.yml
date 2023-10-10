@@ -33,6 +33,7 @@ jobs:
             # aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
             aws configure list
             terraform apply --var-file=devops.tfvars -auto-approve
+            ls
             chmod 400 tfproject.pem
       - run:
           name: "Build & Push The Docker Image To Docker Hub"
