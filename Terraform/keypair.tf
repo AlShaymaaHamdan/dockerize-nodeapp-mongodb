@@ -15,5 +15,5 @@ resource "aws_key_pair" "tfproject" {
 # Save PEM file locally
 resource "local_file" "tfproject" {
   content  = tls_private_key.tfproject.private_key_pem
-  filename = "${pathexpand("~/.ssh/tfproject.pem")}"
+  filename = "tfproject.pem"
 }
