@@ -45,6 +45,8 @@ jobs:
           name: "Run ansible file to deploy the container to ec2"
           working_directory: Ansible
           command: |
+            ls
+            cat inventory
             ansible-playbook -i inventory -e "CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME" config-EC2.yml
 
   destroy-terraform:
