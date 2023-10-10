@@ -34,6 +34,7 @@ jobs:
             aws configure list
             terraform apply --var-file=devops.tfvars -auto-approve
             ls
+            pwd
             chmod 400 tfproject.pem
       - run:
           name: "Build & Push The Docker Image To Docker Hub"
