@@ -29,7 +29,7 @@
         mode: 'u+x,g+x'
     
     - name: Copy dockerfile to the remote server
-      synchronize:
+      copy:
         src: ../Dockerfile
         dest: .
 
