@@ -30,21 +30,21 @@
     
     - name: Copy dockerfile to the remote server
       synchronize:
-        src: /home/circleci/project/Dockerfile
+        src: ../Dockerfile
         dest: .
 
     - name: Copy docker compose file to the remote server
       copy:
-        src: /home/circleci/project/docker-compose.yaml
+        src: ../docker-compose.yaml
         dest: .
 
     - name: Copy app to the remote server
       copy:
-        src: /home/circleci/project/app
+        src: ../app
         dest: .
 
     - name: run docker compose
       community.docker.docker_compose:
-        project_src: /home/circleci/project
+        project_src: ../
         files:
         - docker-compose.yml
