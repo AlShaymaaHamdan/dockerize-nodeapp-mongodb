@@ -29,22 +29,22 @@
         mode: 'u+x,g+x'
     
     - name: Copy dockerfile to the remote server
-      copy:
-        src: ../Dockerfile
+      synchronize:
+        src: /home/circleci/project/Dockerfile
         dest: .
 
     - name: Copy docker compose file to the remote server
       copy:
-        src: ../docker-compose.yaml
+        src: /home/circleci/project/docker-compose.yaml
         dest: .
 
     - name: Copy app to the remote server
       copy:
-        src: ../app
+        src: /home/circleci/project/app
         dest: .
 
     - name: run docker compose
       community.docker.docker_compose:
-        project_src: ../
+        project_src: /home/circleci/project
         files:
         - docker-compose.yml
